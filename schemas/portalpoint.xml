@@ -1,0 +1,9 @@
+<table name="portalpoint">
+    <column name="log_srl" type="number" size="11" notnull="notnull" index="idx_log_srl" />
+    <column name="title" type="varchar" size="60" notnull="notnull" index="idx_title" />
+    <column name="member_srl" type="number" size="11" notnull="notnull" index="idx_member_srl" />
+    <column name="point" type="number" size="11" notnull="notnull" index="idx_point" />
+    <column name="url" type="varchar" size="250" notnull="notnull" />
+    <column name="regdate" type="date" index="idx_regdate" />
+    <column name="ipaddress" type="varchar" size="128" notnull="notnull" index="idx_ipaddress" />
+</table>

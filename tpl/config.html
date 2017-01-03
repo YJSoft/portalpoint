@@ -1,0 +1,37 @@
+<!--#include("./header.html")-->
+<!--%import("filter/insert_config.xml")-->
+
+<form action="./" method="get" onsubmit="return procFilter(this, insert_config)">
+    <table cellspacing="0" class="rowTable">
+    <tbody>
+    <tr>
+        <th scope="row"><div>1일 최대포인트</div></th>
+        <td class="wide">
+            <input type="text" name="max_point" value="{$portal_config->max_point}" class="inputTypeText" />
+            <p>모든 포탈을 통틀어 하루에 획득할수 있는 포인트를 설정 해 주세요.<br />(0 입력시 제한없음)</p>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>메세지</div></th>
+        <td class="wide">
+            <p>- 최대포인트 초과시 메세지</p>
+            <label for="use_excess"><input type="checkbox" name="use_excess" id="use_excess" value="N"<!--@if($portal_config->use_excess=='N')--> checked="checked"<!--@end--> /> 출력안함</label><br />
+            <textarea name="excess_message" class="inputTypeTextArea w400">{$portal_config->excess_message}</textarea>
+            <p>+ 메세지 치환키워드<br /><br />
+            
+                [max_point] - 최대포인트<br />
+                [today_point] - 오늘 받은 포인트
+            </p>
+            <p>- 손님클릭시 메세지</p>
+            <label for="use_guest"><input type="checkbox" name="use_guest" id="use_guest" value="N"<!--@if($portal_config->use_guest=='N')--> checked="checked"<!--@end--> /> 출력안함</label><br />
+            <textarea name="guest_message" class="inputTypeTextArea w400">{$portal_config->guest_message}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2" class="button">
+            <span class="button black strong"><input type="submit" value="{$lang->cmd_save}" accesskey="s" /></span>
+        </th>
+	</tr>
+    </tbody>
+    </table>    
+</form>

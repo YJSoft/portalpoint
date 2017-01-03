@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <title xml:lang="ko">Portal XE</title>
+    <description xml:lang="ko">다른URL로 이동과 동시에 포인트를 지급하는 모듈입니다.</description>
+    <version>1.2</version>
+    <date>2011-02-01</date>
+    <category>member</category>
+
+    <author email_address="admin@barch.kr" link="http://xpressengine.com">
+        <name xml:lang="ko">러키군</name>
+    </author>
+</module>

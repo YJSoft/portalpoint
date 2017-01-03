@@ -1,0 +1,23 @@
+<query id="getLogList" action="select">
+    <tables>
+        <table name="portalpoint" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="more" column="substr(regdate,1,8)" var="regdate_more" filter="number" />
+        <condition operation="less" column="substr(regdate,1,8)" var="regdate_less" filter="number" pipe="and" />
+        <group pipe="and">
+            <condition operation="equal" column="member_srl" var="member_srl" filter="number" />
+            <condition operation="like" column="title" var="title" pipe="or" />
+            <condition operation="like" column="ipaddress" var="ipaddress" pipe="or" />
+        </group>
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="regdate" order="desc" />
+        <list_count var="list_count" default="20" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

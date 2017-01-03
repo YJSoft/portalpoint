@@ -1,0 +1,12 @@
+<!--%import("js/portal.js")-->
+
+<h3 class="xeAdmin">Portal XE</h3> 
+<div class="infoText">링크를 클릭했을때, 다른 URL로 이동과 동시에 설정한 포인트를 1일 1회 지급하는 모듈입니다.<br />링크: {getFullUrl('','module','portalpoint')}&title=포탈변수명</div> 
+
+<div class="header4">
+    <ul class="localNavigation">
+        <li <!--@if($act=="dispPortalpointAdminConfig")-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispPortalpointAdminConfig')}">모듈 설정</a></li>
+        <li <!--@if($act=="dispPortalpointAdminPortal")-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispPortalpointAdminPortal')}">포탈 관리</a></li>
+        <li <!--@if($act=="dispPortalpointAdminLog")-->class="on"<!--@end-->><a href="{getUrl('','module',$module,'act','dispPortalpointAdminLog')}">로그 관리</a></li>
+    </ul>
+</div>

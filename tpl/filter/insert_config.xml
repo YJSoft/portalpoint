@@ -1,0 +1,10 @@
+<filter name="insert_config" module="portalpoint" act="procPortalpointAdminInsertConfig" confirm_msg_code="confirm_update">
+    <form>
+        <node target="max_point" filter="number" />
+    </form>
+    <parameter />
+    <response>
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>

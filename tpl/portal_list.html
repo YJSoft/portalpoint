@@ -1,0 +1,98 @@
+<!--#include("./header.html")-->
+<!--%import("filter/insert_portal.xml")-->
+
+<form action="./" method="get" onsubmit="return procFilter(this, insert_portal)">
+    <input type="hidden" name="target" value="{$m_data['title']}" />
+    <table cellspacing="0" class="rowTable">
+    <tbody>
+    <tr>
+        <th scope="row"><div>포탈 변수명</div></th>
+        <td class="wide">
+            <input type="text" name="title" value="{$m_data['title']}" class="inputTypeText" />
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>이동시킬 URL</div></th>
+        <td class="wide">
+            <input type="text" name="url" value="{$m_data['url']}" class="inputTypeText w400" />
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>포인트</div></th>
+        <td class="wide">
+            <input type="text" name="delay" value="{$m_data['delay']}" class="inputTypeText w40" />
+            <select name="delay_type">
+            <!--@foreach($lang->delay_type_list as $key => $val)-->
+            <option value="{$key}"<!--@if($key==$m_data['delay_type'])--> selected="selected"<!--@end-->>{$val}</option>
+            <!--@end-->
+            </select>에 한번
+            <input type="text" name="point" value="{$m_data['point']}" class="inputTypeText" /> point 지급
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div>메세지</div></th>
+        <td class="wide">
+            <p>- 성공시 메세지</p>
+            <label for="use_message1"><input type="checkbox" name="use_message1" id="use_message1" value="N"<!--@if($m_data['use_message1']=='N')--> checked="checked"<!--@end--> /> 출력안함</label><br />
+            <textarea name="click_message1" class="inputTypeTextArea w400">{$m_data['click_message1']}</textarea>
+            <p>- 이미 받았을때</p>
+            <label for="use_message2"><input type="checkbox" name="use_message2" id="use_message2" value="N"<!--@if($m_data['use_message2']=='N')--> checked="checked"<!--@end--> /> 출력안함</label><br />
+            <textarea name="click_message2" class="inputTypeTextArea w400">{$m_data['click_message2']}</textarea>
+            <p>+ 메세지 치환키워드<br /><br />
+            
+                [point] - 받은포인트<br />
+                [url] - 이동시킬 URL
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2" class="button">
+            <span class="button black strong"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+        </th>
+	</tr>
+    </tbody>
+    </table>    
+</form>
+
+<h3 class="xeAdmin">포탈 목록</h3>
+<form action="./" method="get" id="fo_list">
+<table cellspacing="0" class="rowTable">
+<thead>
+    <tr>
+        <th scope="col"><div><input type="checkbox" onclick="XE.checkboxToggleAll(); return false;" /></div></th>
+        <th scope="col" class="half_wide"><div>변수명</div></th>
+        <th scope="col" class="half_wide"><div>URL</div></th>
+        <th scope="col"><div>포인트</div></th>
+        <th scope="col" colspan="3"><div>&nbsp;</div></th>
+    </tr>
+</thead>
+<tbody>
+    <!--@if($portal_config->url_list)-->
+    <!--@foreach($portal_config->url_list as $key => $val)-->
+    <tr>
+        <td rowspan="2" class="center"><input type="checkbox" name="cart" value="{$val['title']}" /></td>
+        <td>{$val['title']}</td>
+        <td><a href="{$val['url']}" onclick="window.open(this.href);return false">{$val['url']}</a></td>
+        <td>{(int)$val['delay']}<!--@if($val['delay_type'])-->{$lang->delay_type_list[$val['delay_type']]}<!--@else-->{$lang->delay_type_list[0]}<!--@end--> - {$val['point']}</td>
+        <td><a href="{getUrl('target',$val['title'])}" class="buttonSet buttonSetting"><span>{$lang->cmd_setup}</span></a></td>
+    </tr>
+    <tr>
+        <td colspan="4"><div>URL: <input type="text" value="{getFullUrl('','module','portalpoint','title',$val['title'])}" readonly="readonly" class="inputTypeText fullWidth" /></div></td>
+    </tr>
+    <!--@end-->
+    <!--@end-->
+</tbody>
+</table>
+</form>
+
+<div class="clear">
+    <div class="fl">
+        <a href="#" onclick="doDeletePortals(); return false;" class="button green"><span>{$lang->cmd_delete}</span></a>
+    </div>
+
+    <div class="fr"></div>
+</div>
+
+<script type="text/javascript">
+var delete_message = "{$lang->confirm_delete}";
+</script>

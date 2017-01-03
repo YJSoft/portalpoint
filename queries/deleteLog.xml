@@ -1,0 +1,12 @@
+<query id="deleteLog" action="delete">
+    <tables>
+        <table name="portalpoint" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="log_srl" var="log_srl" pipe="and" />
+        <condition operation="in" column="log_srl" var="log_srls" pipe="and" />
+        <condition operation="equal" column="member_srl" var="member_srl" filter="number" />
+        <condition operation="less" column="substr(regdate,1,8)" var="regdate_less" pipe="and" />
+        <condition operation="more" column="substr(regdate,1,8)" var="regdate_more" pipe="and" />
+    </conditions>
+</query>

@@ -1,0 +1,15 @@
+<query id="getLogWithPoint" action="select">
+    <tables>
+        <table name="portalpoint" />
+    </tables>
+    <columns>
+        <column name="sum(point)" alias="total_point" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="substr(regdate,1,8)" var="regdate" />
+        <group pipe="and">
+            <condition operation="like_prefix" column="ipaddress" var="ipaddress_prefix" />
+            <condition operation="equal" column="member_srl" var="member_srl" filter="number" pipe="or" />
+        </group>
+    </conditions>
+</query>

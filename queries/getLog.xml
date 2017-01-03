@@ -1,0 +1,20 @@
+<query id="getLog" action="select">
+    <tables>
+        <table name="portalpoint" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="title" var="title" pipe="and" />
+        <condition operation="equal" column="substr(regdate,1,8)" var="regdate" pipe="and" />
+        <group pipe="and">
+            <condition operation="like_prefix" column="ipaddress" var="ipaddress_prefix" />
+            <condition operation="equal" column="member_srl" var="member_srl" filter="number" pipe="or" />
+        </group>
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="regdate" order="desc" />
+        <list_count var="list_count" default="1" />
+    </navigation>
+</query>

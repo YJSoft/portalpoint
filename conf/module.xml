@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <grants />
+    <actions>
+        <action name="dispPortalpointIndex" type="view" standalone="true" index="true" />
+
+        <action name="dispPortalpointAdminPortal" type="view" standalone="true" admin_index="true" />
+        <action name="dispPortalpointAdminConfig" type="view" standalone="true" />
+        <action name="dispPortalpointAdminLog" type="view" standalone="true" />
+
+        <action name="procPortalpointAdminInsertConfig" type="controller" standalone="true"  />
+        <action name="procPortalpointAdminInsertPortal" type="controller" standalone="true"  />
+        <action name="procPortalpointAdminDeletePortal" type="controller" standalone="true"  />
+        <action name="procPortalpointAdminLogDelete" type="controller" standalone="true"  />
+    </actions>
+</module>

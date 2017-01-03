@@ -1,0 +1,11 @@
+<filter name="insert_portal" module="portalpoint" act="procPortalpointAdminInsertPortal" confirm_msg_code="confirm_submit">
+    <form>
+        <node target="title" required="true" maxlength="60" />
+        <node target="delay" filter="number" />
+    </form>
+    <parameter />
+    <response callback_func="completeInsertPortal">
+        <tag name="error" />
+        <tag name="message" />
+    </response>
+</filter>
